@@ -36,7 +36,10 @@ view : Model -> Html Msg
 view model =
   div []
     [ Nav.view
-    , div [ class "container", style [("margin-top", "30px"), ( "text-align", "center" )] ][]
+    , div [ class "container", style [("margin-top", "30px")] ]
+        [ h1 [] [ text "510k Medical Devices Data"]
+        , p [] [ text "This is a test." ]
+        ]
     ]
 
 

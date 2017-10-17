@@ -7,13 +7,21 @@
 $av-enable-grid-cell-center: true;
 @import '~avalanche-css/_avalanche.scss';
 
+@import "fonts";
+
+
 $content__width: 800px;
 
 $color__primary: #205493;
-$font__header: 'Open Sans', sans-serif;
 
 html, body {
     margin: 0;
+    background: #F5F5F5;
+}
+
+.container {
+    max-width: $content__width;
+    margin: 0 auto;
 }
 
 .topnav {
@@ -21,7 +29,7 @@ html, body {
 }
 
 .topnav__inner {
-    max-width: 800px;
+    max-width: $content__width;
     margin: 0 auto;
     font-family: $font__header;
     padding: 10px;
