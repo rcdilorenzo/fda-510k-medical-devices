@@ -38,6 +38,15 @@ var commonConfig = {
         rules: [{
             test: /\.(eot|ttf|woff|woff2|svg)$/,
             use: 'file-loader?publicPath=../../&name=static/css/[hash].[ext]'
+        },{
+            test: /\.csv$/,
+            use: 'raw-loader'
+        },{
+            test: /\.md$/,
+            use: [
+                { loader: 'html-loader' },
+                { loader: 'markdown-loader', options: { pedantic: true, renderer: renderer }}
+            ]
         }]
     },
     plugins: [
@@ -82,15 +91,6 @@ if (isDev === true) {
             },{
                 test: /\.sc?ss$/,
                 use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
-            },{
-                test: /\.csv$/,
-                use: 'raw-loader'
-            },{
-                test: /\.md$/,
-                use: [
-                    { loader: 'html-loader' },
-                    { loader: 'markdown-loader', options: { pedantic: true, renderer: renderer }}
-                ]
             }]
         }
     });

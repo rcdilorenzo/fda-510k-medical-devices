@@ -1,6 +1,10 @@
 $font__default: 'Open Sans', sans-serif;
 $font__header: $font__default;
 
+html, body {
+    font-family: $font__default;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: $font__default;
 }
@@ -33,4 +37,12 @@ h5 {
 
 h6 {
     font-size: 14pt;
+}
+
+p {
+    font-size: 12pt;
+}
+
+.container li {
+    line-height: 1.8em;
 }

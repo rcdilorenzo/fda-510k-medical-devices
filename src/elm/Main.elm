@@ -6,14 +6,13 @@ import Html.Events exposing ( onClick )
 
 import Components.Navigation as Nav
 
-import Views.Location as Location
-
 import Models.Flags exposing (..)
 import Models.Chart exposing (..)
 import Models.Route exposing (..)
 import Models.Message exposing (..)
 import Models.State exposing (..)
 
+import Pages.Results
 import Pages.Static
 
 
@@ -48,7 +47,7 @@ contentView : State -> Html Message
 contentView model =
     case model.route of
         ResultsR ->
-            Location.view
+            Pages.Results.view model
         ProcessR ->
             Pages.Static.view "To be expanded..."
         AboutR ->

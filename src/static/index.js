@@ -7,7 +7,8 @@ var input = {
     countryCode: require('../../dataset-artifacts/country_code_count.csv'),
     yearCount: require('../../dataset-artifacts/year_count_oldest_to_newest.csv'),
     pages: {
-        about: require('../md/about.md')
+        about: require('./md/about.md'),
+        intro: require('./md/intro.md')
     }
 };
 

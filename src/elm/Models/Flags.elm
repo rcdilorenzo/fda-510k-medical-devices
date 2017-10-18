@@ -2,6 +2,7 @@ module Models.Flags exposing (..)
 
 type alias FlagPages =
     { about : String
+    , intro : String
     }
 
 type alias Flags =
