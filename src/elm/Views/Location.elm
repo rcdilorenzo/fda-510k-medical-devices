@@ -12,5 +12,5 @@ usApplications =
     div []
         [ h2 [] [ text "U.S. Medical Device Applicants" ]
         , p [] [ text "This is a test." ]
-        , iframe [ height 600, src "https://plot.ly/~rcdilorenzo/6.embed" ] []
+        , iframe [ height 600, src "" ] [] -- https://plot.ly/~rcdilorenzo/6.embed
         ]

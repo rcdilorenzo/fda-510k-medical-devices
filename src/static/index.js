@@ -1,7 +1,25 @@
-// pull in desired CSS/SASS files
-require( './styles/main.scss' );
-var $ = jQuery = require( '../../node_modules/jquery/dist/jquery.js' );           // <--- remove if jQuery not needed
+require('./styles/main.scss');
 
-// inject bundled Elm app into div#main
-var Elm = require( '../elm/Main' );
-Elm.Main.embed( document.getElementById( 'main' ) );
+var Chart = require('chart.js');
+var Elm = require('../elm/Main');
+
+var app = Elm.Main.embed(document.getElementById('main'));
+
+charts = {};
+
+app.ports.plot.subscribe(function (options) {
+    if (charts[id]) {
+        charts[id].destroy();
+    }
+    var id = options.id;
+    delete options.id;
+
+    var type = options.chartType;
+    delete options.chartType;
+
+    options.type = type;
+    var element = document.getElementById(id).getContext('2d');
+    charts[id] = new Chart(element, options);
+});
+
+

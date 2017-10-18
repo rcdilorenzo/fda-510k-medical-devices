@@ -1,44 +1,47 @@
-module Main exposing (..)
+port module Main exposing (..)
+
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing ( onClick )
 
 import Components.Navigation as Nav
 import Views.Location as Location
+import Models.Chart exposing (..)
 
 
--- APP
-main : Program Never Int Msg
+main : Program Never Model Msg
 main =
-  Html.beginnerProgram { model = model, view = view, update = update }
+  Html.program
+      { init = init
+      , view = view
+      , update = update
+      , subscriptions = (\_ -> Sub.none) }
 
 
--- MODEL
-type alias Model = Int
+type alias Model = {}
 
-model : number
-model = 0
+init : (Model, Cmd msg)
+init = ({}, plot (sample "sample"))
 
 
--- UPDATE
 type Msg = NoOp
 
-update : Msg -> Model -> Model
+update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
-    NoOp -> model
+    NoOp -> (model, Cmd.none)
 
 
--- VIEW
--- Html is defined as: elem [ attribs ][ children ]
--- CSS can be applied via class names or inline style attrib
 view : Model -> Html Msg
 view model =
   div []
     [ Nav.view
     , div [ class "container", style [("margin-top", "30px")] ]
         [ h1 [] [ text "510k Medical Devices Data"]
+        , canvas [ id "sample", width 400, height 400 ] []
         , Location.view
         ]
     ]
 
+
+port plot : Chart -> Cmd msg
