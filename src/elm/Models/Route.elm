@@ -1,5 +1,6 @@
 module Models.Route exposing (..)
 
 type RouteSection
-    = Home
-    | About
+    = ResultsR
+    | ProcessR
+    | AboutR

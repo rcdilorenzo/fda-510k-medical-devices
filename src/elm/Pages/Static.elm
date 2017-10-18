@@ -1,4 +1,4 @@
-module Pages.About exposing (view)
+module Pages.Static exposing (view)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -8,6 +8,6 @@ import Json.Encode
 
 import Markdown
 
-view : FlagPages -> Html msg
-view pages =
-    Markdown.toHtml [] pages.about
+view : String -> Html msg
+view page =
+    Markdown.toHtml [] page

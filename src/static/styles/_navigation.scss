@@ -8,14 +8,12 @@
     margin: 0 auto;
     color: white;
     font-family: $font__header;
-    a {
-        color: white;
-        text-decoration: none;
-    }
+    a { text-decoration: none; }
 }
 
 .topnav__inner {
     padding: 10px;
+    a { color: white; }
 }
 
 .topnav__main {
@@ -70,7 +68,7 @@
 
 .navbar__link {
     cursor: pointer;
-    color: white;
+    color: mix(white, $color__primary--light, 20%);
     padding-right: 20px;
     text-decoration: none;
     font-size: 13pt;

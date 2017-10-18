@@ -14,7 +14,7 @@ import Models.Route exposing (..)
 import Models.Message exposing (..)
 import Models.State exposing (..)
 
-import Pages.About as About
+import Pages.Static
 
 
 main : Program Flags State Message
@@ -26,7 +26,7 @@ main =
       , subscriptions = (\_ -> Sub.none) }
 
 init : Flags -> (State, Cmd msg)
-init flags = ((State Home flags.pages), plot (sample "sample"))
+init flags = ((State ResultsR flags.pages), plot (sample "sample"))
 
 
 update : Message -> State -> (State, Cmd Message)
@@ -47,10 +47,12 @@ view model =
 contentView : State -> Html Message
 contentView model =
     case model.route of
-        Home ->
+        ResultsR ->
             Location.view
-        About ->
-            About.view model.pages
+        ProcessR ->
+            Pages.Static.view "To be expanded..."
+        AboutR ->
+            Pages.Static.view model.pages.about
 
 
 port plot : Chart -> Cmd msg
