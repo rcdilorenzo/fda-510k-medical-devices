@@ -5,7 +5,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-
+var marked = require('marked');
+var renderer = new marked.Renderer();
 
 const prod = 'production';
 const dev = 'development';
@@ -81,6 +82,15 @@ if (isDev === true) {
             },{
                 test: /\.sc?ss$/,
                 use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+            },{
+                test: /\.csv$/,
+                use: 'raw-loader'
+            },{
+                test: /\.md$/,
+                use: [
+                    { loader: 'html-loader' },
+                    { loader: 'markdown-loader', options: { pedantic: true, renderer: renderer }}
+                ]
             }]
         }
     });

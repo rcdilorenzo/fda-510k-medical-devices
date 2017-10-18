@@ -5,43 +5,52 @@ import Html.Attributes exposing (..)
 import Html.Events exposing ( onClick )
 
 import Components.Navigation as Nav
+
 import Views.Location as Location
+
+import Models.Flags exposing (..)
 import Models.Chart exposing (..)
+import Models.Route exposing (..)
+import Models.Message exposing (..)
+import Models.State exposing (..)
+
+import Pages.About as About
 
 
-main : Program Never Model Msg
+main : Program Flags State Message
 main =
-  Html.program
+    Html.programWithFlags
       { init = init
       , view = view
       , update = update
       , subscriptions = (\_ -> Sub.none) }
 
-
-type alias Model = {}
-
-init : (Model, Cmd msg)
-init = ({}, plot (sample "sample"))
+init : Flags -> (State, Cmd msg)
+init flags = ((State Home flags.pages), plot (sample "sample"))
 
 
-type Msg = NoOp
-
-update : Msg -> Model -> (Model, Cmd Msg)
+update : Message -> State -> (State, Cmd Message)
 update msg model =
-  case msg of
-    NoOp -> (model, Cmd.none)
+    case msg of
+        NoOp -> (model, Cmd.none)
+        ChangeRoute route -> ({ model | route = route }, plot (sample "sample"))
 
 
-view : Model -> Html Msg
+view : State -> Html Message
 view model =
-  div []
-    [ Nav.view
-    , div [ class "container", style [("margin-top", "30px")] ]
-        [ h1 [] [ text "510k Medical Devices Data"]
-        , canvas [ id "sample", width 400, height 400 ] []
-        , Location.view
+    div []
+        [ (Nav.view model)
+        , div [ class "container", style [("margin-top", "30px")] ]
+            [ contentView model ]
         ]
-    ]
+
+contentView : State -> Html Message
+contentView model =
+    case model.route of
+        Home ->
+            Location.view
+        About ->
+            About.view model.pages
 
 
 port plot : Chart -> Cmd msg

@@ -1,18 +1,21 @@
-.topnav {
+.topnav, .navbar {
     background-color: $color__primary;
     padding: 0 25px;
 }
 
-.topnav__inner {
+.topnav__inner, .navbar__inner {
     max-width: $content__width;
     margin: 0 auto;
-    font-family: $font__header;
-    padding: 10px;
     color: white;
+    font-family: $font__header;
     a {
         color: white;
         text-decoration: none;
     }
+}
+
+.topnav__inner {
+    padding: 10px;
 }
 
 .topnav__main {
@@ -40,4 +43,38 @@
     margin-top: 7px;
     font-size: 12pt;
     display: inline-block;
+}
+
+/* Navbar */
+
+.navbar {
+    background: $color__primary--dark;
+    color: white;
+}
+
+.navbar__inner {
+    padding: 0px;
+}
+
+.navbar__links {
+    margin: 8px 0px;
+    display: inline-block;
+    width: 100%;
+    padding: 0;
+}
+
+.navbar__item {
+    display: inline-block;
+    float: left;
+}
+
+.navbar__link {
+    cursor: pointer;
+    color: white;
+    padding-right: 20px;
+    text-decoration: none;
+    font-size: 13pt;
+    &.navbar__link--active {
+        font-weight: bold;
+    }
 }
