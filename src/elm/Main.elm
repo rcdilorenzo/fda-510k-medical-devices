@@ -4,6 +4,7 @@ import Html.Attributes exposing (..)
 import Html.Events exposing ( onClick )
 
 import Components.Navigation as Nav
+import Views.Location as Location
 
 
 -- APP
@@ -20,13 +21,12 @@ model = 0
 
 
 -- UPDATE
-type Msg = NoOp | Increment
+type Msg = NoOp
 
 update : Msg -> Model -> Model
 update msg model =
   case msg of
     NoOp -> model
-    Increment -> model + 1
 
 
 -- VIEW
@@ -38,17 +38,7 @@ view model =
     [ Nav.view
     , div [ class "container", style [("margin-top", "30px")] ]
         [ h1 [] [ text "510k Medical Devices Data"]
-        , p [] [ text "This is a test." ]
+        , Location.view
         ]
     ]
 
-
--- CSS STYLES
-styles : { img : List ( String, String ) }
-styles =
-  {
-    img =
-      [ ( "width", "33%" )
-      , ( "border", "4px solid #337AB7")
-      ]
-  }

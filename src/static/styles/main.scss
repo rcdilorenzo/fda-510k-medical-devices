@@ -7,12 +7,12 @@
 $av-enable-grid-cell-center: true;
 @import '~avalanche-css/_avalanche.scss';
 
-@import "fonts";
-
-
 $content__width: 800px;
-
 $color__primary: #205493;
+
+@import "fonts";
+@import "navigation";
+
 
 html, body {
     margin: 0;
@@ -22,48 +22,11 @@ html, body {
 .container {
     max-width: $content__width;
     margin: 0 auto;
+    padding: 0 25px;
 }
 
-.topnav {
-    background-color: $color__primary;
-}
-
-.topnav__inner {
-    max-width: $content__width;
-    margin: 0 auto;
-    font-family: $font__header;
-    padding: 10px;
-    color: white;
-    a {
-        color: white;
-        text-decoration: none;
-    }
-}
-
-.topnav__main {
-    font-size: 20pt;
-}
-
-.topnav__section {
-}
-
-.topnav__section--image {
-    height: 35px;
-    img {
-        float: left;
-        height: 35px;
-        border-radius: 50%;
-    }
-}
-
-.topnav__section--right {
-    float: right;
-}
-
-.topnav__link, .topnav__label {
-    margin-left: 7px;
-    margin-top: 7px;
-    font-size: 12pt;
-    display: inline-block;
+iframe {
+    width: 100%;
+    border: none;
 }
 
