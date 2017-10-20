@@ -37,12 +37,10 @@ initChartStates : FlagFiles -> ChartStates
 initChartStates files =
     ChartStates
       (categoryVsDecision "catVsDec" files.categoryVsDecisionCount)
-      (committeeVsDecision "comVsDec" files.reviewCommitteeVsDecisionCount)
 
 allChartsCmd : ChartStates -> Cmd msg
 allChartsCmd charts =
     [ plot charts.categoryVsDecision
-    , plot charts.committeeVsDecision
     ] |> Cmd.batch
 
 update : Message -> State -> (State, Cmd Message)

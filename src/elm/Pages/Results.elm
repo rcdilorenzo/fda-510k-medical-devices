@@ -17,8 +17,7 @@ view model =
 usApplications : Html any
 usApplications =
     div []
-        [ h2 [] [ text "U.S. Medical Device Applicants" ]
-        --- , iframe [ height 600, src "https://plot.ly/~rcdilorenzo/6.embed" ] []
+        [ h2 [] [ text "What kind of devices are considered safe?" ]
         , canvas [ id "catVsDec" ] []
-        , canvas [ id "comVsDec" ] []
         ]
+        --- , iframe [ height 600, src "https://plot.ly/~rcdilorenzo/6.embed" ] []

@@ -6,7 +6,6 @@ import Models.Route exposing (..)
 
 type alias ChartStates =
     { categoryVsDecision : Chart
-    , committeeVsDecision : Chart
     }
 
 type alias State =
