@@ -11,9 +11,6 @@ import Models.State exposing (..)
 gravatar : String
 gravatar = "https://en.gravatar.com/userimage/37840473/07b6e45ebce61c9aea1ce0bc8ec49547.png"
 
-github : String
-github = "https://github.com/rcdilorenzo/fda-510k-medical-devices"
-
 view : State -> Html Message
 view model =
     header []
@@ -21,7 +18,7 @@ view model =
             [ div [ class "topnav__inner"]
                 [ a [ class "topnav__main", href "#", onClick (ChangeRoute ResultsR)]
                       [ text "OpenFDA Exploration" ]
-                , a [ href github, class "topnav__section topnav__section--banner" ]
+                , a [ href "https://l.rcd.zone/fda-repo", class "topnav__section topnav__section--banner" ]
                     [ img [ src gravatar, class "topnav__image" ] []
                     , label [ class "topnav__label topnav__label--top"] [ text "Christian Di Lorenzo" ]
                     , label [ class "topnav__label topnav__label--bottom"] [ text "Regis University Student" ]

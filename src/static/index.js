@@ -4,8 +4,17 @@ var Chart = require('chart.js');
 var Elm = require('../elm/Main');
 
 var input = {
-    countryCode: require('../../dataset-artifacts/country_code_count.csv'),
-    yearCount: require('../../dataset-artifacts/year_count_oldest_to_newest.csv'),
+    files: {
+        applicantCount: require('../../dataset-artifacts/applicant_count_top_20.csv'),
+        categoryCount: require('../../dataset-artifacts/category_counts_all_time.csv'),
+        categoryVsDecisionCount: require('../../dataset-artifacts/category_vs_decision_count.csv'),
+        countryCode: require('../../dataset-artifacts/country_code_count.csv'),
+        decisionCount: require('../../dataset-artifacts/decision_counts.csv'),
+        deviceNounCount: require('../../dataset-artifacts/device_noun_count.csv'),
+        expeditedReviewCount: require('../../dataset-artifacts/expedited_review_count.csv'),
+        reviewCommitteeVsDecisionCount: require('../../dataset-artifacts/review_committee_vs_decision_count.csv'),
+        yearCount: require('../../dataset-artifacts/year_count_oldest_to_newest.csv')
+    },
     pages: {
         about: require('./md/about.md'),
         intro: require('./md/intro.md')
@@ -14,14 +23,19 @@ var input = {
 
 var app = Elm.Main.embed(document.getElementById('main'), input);
 
+Chart.defaults.global.legend.padding = 1000;
+
 charts = {};
 toRender = {};
 
 var renderChart = function (id, options) {
     var ctx = document.getElementById(id).getContext('2d');
     ctx.canvas.width = 800;
-    ctx.canvas.height = 400;
-    charts[id] = new Chart(ctx, options);
+    ctx.canvas.height = options.height ? options.height : 400;
+    delete options['height'];
+    charts[id] = new Chart(ctx, Object.assign(options, {
+        options: { scales: { xAxes: [{ stacked: true }], yAxes: [{ stacked: true }] }}
+    }));
 };
 
 app.ports.plot.subscribe(function (options) {

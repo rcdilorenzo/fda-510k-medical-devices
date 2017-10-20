@@ -18,6 +18,7 @@ usApplications : Html any
 usApplications =
     div []
         [ h2 [] [ text "U.S. Medical Device Applicants" ]
-        , iframe [ height 600, src "https://plot.ly/~rcdilorenzo/6.embed" ] []
-        , canvas [ id "sample" ] []
+        --- , iframe [ height 600, src "https://plot.ly/~rcdilorenzo/6.embed" ] []
+        , canvas [ id "catVsDec" ] []
+        , canvas [ id "comVsDec" ] []
         ]
