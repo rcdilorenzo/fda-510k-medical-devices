@@ -2,12 +2,12 @@
 // @import '~bootstrap-sass/assets/stylesheets/bootstrap/_mixins.scss';
 // @import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:400,600,700');
 
 $av-enable-grid-cell-center: true;
 @import '~avalanche-css/_avalanche.scss';
 
-$content__width: 800px;
+$content__width: 1000px;
 $color__primary: #205493;
 $color__primary--dark: #082446;
 $color__primary--light: #478CDF;
@@ -18,7 +18,7 @@ $color__primary--light: #478CDF;
 
 html, body {
     margin: 0;
-    background: #F5F5F5;
+    background: #E5E5E5;
 }
 
 .container {
@@ -48,6 +48,6 @@ iframe {
     }
 
     .container {
-        padding-top: 70px;
+        padding-top: 100px;
     }
 }

@@ -1,3 +1,7 @@
+.topnav {
+    height: 85px;
+}
+
 .topnav, .navbar {
     background-color: $color__primary;
     padding: 0 25px;
@@ -7,50 +11,79 @@
     max-width: $content__width;
     margin: 0 auto;
     color: white;
-    font-family: $font__header;
     a { text-decoration: none; }
 }
 
 .topnav__inner {
-    padding: 10px 0px;
+    padding: 15px 0px;
     a { color: white; }
 }
 
 .topnav__main {
-    font-size: 20pt;
+    font-family: $font__header;
+    font-size: 28pt;
+    font-weight: bold;
+    color: rgba(white, 0.8) !important;
 }
 
 .topnav__section {
+    background: $color__primary--dark;
+    padding: 10px;
+    margin-top: -15px;
 }
 
-.topnav__section--image {
-    height: 35px;
-    img {
-        float: left;
-        height: 35px;
-        border-radius: 50%;
-    }
-}
-
-.topnav__section--right {
-    float: right;
+.topnav__image {
+    height: 58px;
+    margin-top: 7px;
+    margin-left: 7px;
+    float: left;
+    border-radius: 50%;
 }
 
 .topnav__link, .topnav__label {
     margin-left: 7px;
     margin-top: 7px;
-    font-size: 12pt;
+    font-size: 14pt;
     display: inline-block;
+}
+
+.topnav__section--banner {
+    font-weight: bold;
+    float: right;
+    user-select: none;
+    cursor: pointer;
+    .topnav__label {
+        cursor: pointer;
+    }
+}
+
+.topnav__label--top, .topnav__label--bottom {
+    margin-left: 75px;
+    font-size: 14pt;
+    margin-right: 10px;
+}
+
+.topnav__label--top {
+    display: block;
+    margin-top: 7px;
+}
+
+.topnav__label--bottom {
+    display: block;
+    color: rgba(white, 0.4);
+    font-size: 12pt;
+    margin-top: 0px;
 }
 
 /* Navbar */
 
 .navbar {
-    background: $color__primary--dark;
+    background: $color__primary--light;
     color: white;
 }
 
 .navbar__inner {
+    font-family: $font__default;
     padding: 0px;
 }
 
@@ -63,15 +96,16 @@
 
 .navbar__item {
     display: inline-block;
+    width: 100px;
     float: left;
+    margin-right: 20px;
 }
 
 .navbar__link {
     cursor: pointer;
-    color: mix(white, $color__primary--light, 20%);
-    padding-right: 20px;
+    color: $color__primary--dark;
     text-decoration: none;
-    font-size: 13pt;
+    font-size: 18pt;
     &.navbar__link--active {
         font-weight: bold;
     }
