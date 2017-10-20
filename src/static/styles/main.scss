@@ -33,8 +33,8 @@ iframe {
 }
 
 
-@media (max-width: 600px) {
-    .topnav__section--image {
+@media (max-width: 700px) {
+    .topnav__section--banner {
         display: none;
     }
 }
@@ -48,6 +48,6 @@ iframe {
     }
 
     .container {
-        padding-top: 100px;
+        padding-top: 90px;
     }
 }
