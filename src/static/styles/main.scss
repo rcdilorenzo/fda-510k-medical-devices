@@ -12,7 +12,7 @@ $color__primary: #205493;
 $color__primary--dark: #082446;
 $color__primary--light: #478CDF;
 
-@import "fonts";
+@import "typography";
 @import "navigation";
 
 
@@ -32,3 +32,22 @@ iframe {
     border: none;
 }
 
+
+@media (max-width: 600px) {
+    .topnav__section--image {
+        display: none;
+    }
+}
+
+
+@media (min-width: 600px) {
+    header {
+        top: 0px;
+        position: fixed;
+        width: 100%;
+    }
+
+    .container {
+        padding-top: 70px;
+    }
+}
