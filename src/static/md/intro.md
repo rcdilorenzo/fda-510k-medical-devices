@@ -10,3 +10,10 @@ To more fully understand the 510(k) submissions to the FDA, a number of question
 0. Where do most submissions come from geographically?
 0. How often do reviews get expedited?
 0. What companies make the most submissions?
+0. How long do most reviews take?
+
+This [dataset](https://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/HowtoMarketYourDevice/PremarketSubmissions/PremarketNotification510k/default.htm) from the openFDA project [started in 2014](https://open.fda.gov/update/openfda-innovative-initiative-opens-door-to-wealth-of-fda-publicly-available-data/) incorporates a number of data attributes including but not limited to:
+
+- Address: `street number, postal code, zip code, state, country code`
+- Device: `name, class, identification regulation/registration numbers`
+- Review: `date received, decision date, description, committee`
