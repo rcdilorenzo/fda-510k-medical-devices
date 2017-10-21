@@ -2,7 +2,6 @@ port module Main exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing ( onClick )
 
 import Components.Navigation as Nav
 
@@ -41,6 +40,7 @@ initChartStates files =
       (categoryVsDecision "catVsDec" files.categoryVsDecisionCount)
       (yearVsDecisionOrtho "yearVsDecision--ortho" files.yearVsDecisionOrthoCount)
       (yearCount "yearCount" files.yearCount)
+      ((subcatVsDecision "subcatVsDecision" files.subcategoryVsDecisionCount) |> wrapAsPaging 15)
 
 
 allChartsCmd : ChartStates -> Cmd msg
@@ -54,14 +54,50 @@ allChartsCmd charts =
       , plot modifiedCatVsDecision
       , plot charts.yearVsDecisionOrtho
       , plot charts.yearCount
+      , plot (applyPaging charts.subcatVsDecision)
       ] |> Cmd.batch
 
 
 update : Message -> State -> (State, Cmd Message)
 update msg model =
     case msg of
-        NoOp -> (model, Cmd.none)
-        ChangeRoute route -> ({ model | route = route }, allChartsCmd model.charts)
+        NoOp ->
+            (model, Cmd.none)
+
+        ChangeRoute route ->
+            ({ model | route = route }, allChartsCmd model.charts)
+
+        UpdateSubcat chartMsg ->
+            let
+                charts = model.charts
+                (chart, cmd) = updatePagingChart charts.subcatVsDecision chartMsg
+                newCharts = { charts | subcatVsDecision = chart }
+            in
+                ({ model | charts = newCharts}, cmd)
+
+
+updatePagingChart : PagingChart -> ChartMessage -> (PagingChart, Cmd a)
+updatePagingChart pagingChart msg =
+    case msg of
+        Increment ->
+            let
+                page = pagingChart.page
+                rowCount = List.length pagingChart.chart.data.labels
+                newPage = if (page + 1) <= (lastPage pagingChart) then page + 1 else page
+                newChart = { pagingChart | page = newPage }
+                cmd = if newPage /= page then (newChart |> applyPaging |> plot) else Cmd.none
+            in
+                (newChart, cmd)
+
+        Decrement ->
+            let
+                page = pagingChart.page
+                newPage = Basics.max (page - 1) 1
+                newChart = { pagingChart | page = newPage }
+                cmd = if newPage /= page then (newChart |> applyPaging |> plot) else Cmd.none
+            in
+                (newChart, cmd)
+
 
 
 view : State -> Html Message

@@ -1,0 +1,3 @@
+## What specific types of devices are submitted?
+
+Beyond the general categories of devices that are submitted, fourty-four particular sub-categories as defined from the [Code of Federal Regulations - Title 21](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfcfr/CFRSearch.cfm?CFRPartFrom=862&CFRPartTo=892) have been applied to the medical devices. To get a better perspective of the decisions within each sub-category, the chart includes the resulting decisions. The top five most frequent sub-categories of devices are "Prosthetic Devices," "Diagnostic Devices," "Surgical Devices," "Therapeutic Devices," and "Clinical Chemistry Test Systems."

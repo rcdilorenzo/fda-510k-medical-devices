@@ -8,6 +8,7 @@ type alias ChartStates =
     { categoryVsDecision : Chart
     , yearVsDecisionOrtho : Chart
     , yearCount : Chart
+    , subcatVsDecision : PagingChart
     }
 
 type alias State =

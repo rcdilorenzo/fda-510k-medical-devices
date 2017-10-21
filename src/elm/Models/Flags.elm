@@ -8,6 +8,7 @@ type alias FlagFiles =
     , decisionCount : String
     , deviceNounCount : String
     , expeditedReviewCount : String
+    , subcategoryVsDecisionCount : String
     , yearVsDecisionOrthoCount : String
     , yearCount : String
     }
@@ -18,6 +19,7 @@ type alias FlagPages =
     , section1 : String
     , section2 : String
     , section3 : String
+    , section4a : String
     }
 
 type alias Flags =

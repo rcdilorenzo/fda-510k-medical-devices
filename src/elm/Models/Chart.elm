@@ -1,5 +1,11 @@
 module Models.Chart exposing (..)
 
+type alias PagingChart =
+    { size : Int
+    , page : Int
+    , chart : Chart
+    }
+
 type alias Chart =
     { id : String
     , chartType : String
@@ -30,3 +36,29 @@ chartExcept name newId chart =
         chartData = { original | datasets = datasets }
     in
         { chart | data = chartData, id = newId }
+
+
+wrapAsPaging : Int -> Chart -> PagingChart
+wrapAsPaging size chart =
+    PagingChart size 1 chart
+
+
+applyPaging : PagingChart -> Chart
+applyPaging {size, page, chart} =
+    let
+        limit = (\data -> data |> List.drop (size * (page - 1)) |> List.take size)
+        datasets = List.map (\dataset -> { dataset | data = (limit dataset.data) }) chart.data.datasets
+        originalData = chart.data
+        chartData = { originalData | datasets = datasets, labels = (limit chart.data.labels) }
+    in
+        { chart | data = chartData }
+
+lastPage : PagingChart -> Int
+lastPage pagingChart =
+    let
+        rowCount = List.length pagingChart.chart.data.labels
+    in
+        Basics.ceiling ((toFloat rowCount) / (toFloat pagingChart.size))
+
+
+

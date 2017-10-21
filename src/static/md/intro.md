@@ -6,7 +6,8 @@ To more fully understand the 510(k) submissions to the FDA, a number of question
 
 0. [What kind of devices are considered safe?](#what-kind-of-devices-are-considered-safe-)
 0. [Where are most devices submitted from within the United States?](#where-are-most-devices-submitted-from-within-the-united-states-)
-0. How many devices are submitted per year?
+0. [How many devices are submitted per year?](#how-many-devices-are-submitted-per-year-)
+0. [What specific types of devices are submitted?](#what-specific-types-of-devices-are-submitted-)
 0. How often do reviews get expedited?
 0. What companies make the most submissions?
 0. How long do most reviews take?

@@ -1,0 +1,1 @@
+In addition to understanding the type of devices through the categories, a word frequency of each nouns taken from the device descriptions might give a little bit of perspective on what is most often used. 

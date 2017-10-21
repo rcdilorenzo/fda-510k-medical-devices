@@ -11,6 +11,7 @@ $content__width: 1000px;
 $color__primary: #205493;
 $color__primary--dark: #082446;
 $color__primary--light: #478CDF;
+$color__secondary: #1B9DA0;
 
 @import "typography";
 @import "navigation";
@@ -18,8 +19,7 @@ $color__primary--light: #478CDF;
 
 html, body {
     margin: 0;
-    background: #E5E5E5;
-}
+    background: #E5E5E5;}
 
 .container {
     max-width: $content__width;
@@ -54,3 +54,42 @@ iframe {
         text-decoration: none;
     }
 }
+
+/* Pager */
+
+.chart-pager {
+    float: right;
+    background: $color__primary;
+    color: white;
+    border-radius: 5px;
+    display: inline-block;
+    line-height: 1.7em;
+    user-select: none;
+}
+
+.chart-pager__label {
+    padding: 0px 5px;
+}
+
+.chart-pager__link {
+    cursor: pointer;
+    border-bottom: none !important;
+    color: white !important;
+    padding: 3px 8px 2px 8px;
+    &:hover {
+        background: $color__primary--dark;
+    }
+}
+
+.chart-pager__link--left {
+    padding-right: 8px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.chart-pager__link--right {
+    padding-left: 8px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+

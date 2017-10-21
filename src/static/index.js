@@ -12,6 +12,7 @@ var input = {
         decisionCount: require('../../dataset-artifacts/decision_counts.csv'),
         deviceNounCount: require('../../dataset-artifacts/device_noun_count.csv'),
         expeditedReviewCount: require('../../dataset-artifacts/expedited_review_count.csv'),
+        subcategoryVsDecisionCount: require('../../dataset-artifacts/subcategory_vs_decision_count.csv'),
         yearVsDecisionOrthoCount: require('../../dataset-artifacts/year_vs_decision_ortho_count.csv'),
         yearCount: require('../../dataset-artifacts/year_count_oldest_to_newest.csv')
     },
@@ -20,6 +21,7 @@ var input = {
         section1: require('./md/1-safe-devices.md'),
         section2: require('./md/2-basic-demographics.md'),
         section3: require('./md/3-year-counts.md'),
+        section4a: require('./md/4a-specific-devices.md'),
         intro: require('./md/intro.md')
     }
 };
@@ -50,11 +52,12 @@ var renderChart = function (id, options) {
 };
 
 app.ports.plot.subscribe(function (options) {
+    var id = options.id;
+    delete options.id;
+
     if (charts[id]) {
         charts[id].destroy();
     }
-    var id = options.id;
-    delete options.id;
 
     var type = options.chartType;
     delete options.chartType;
