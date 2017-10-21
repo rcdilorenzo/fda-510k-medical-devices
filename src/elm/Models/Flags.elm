@@ -16,6 +16,7 @@ type alias FlagPages =
     { about : String
     , intro : String
     , section1 : String
+    , section2 : String
     }
 
 type alias Flags =

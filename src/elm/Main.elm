@@ -66,7 +66,7 @@ view : State -> Html Message
 view model =
     div []
         [ (Nav.view model)
-        , div [ class "container", style [("margin-top", "30px")] ]
+        , div [ class "container" ]
             [ contentView model ]
         ]
 

@@ -18,6 +18,7 @@ var input = {
     pages: {
         about: require('./md/about.md'),
         section1: require('./md/1-safe-devices.md'),
+        section2: require('./md/2-basic-demographics.md'),
         intro: require('./md/intro.md')
     }
 };

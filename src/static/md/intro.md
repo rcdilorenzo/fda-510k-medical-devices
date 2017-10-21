@@ -4,8 +4,8 @@ Since 1976, medical devices designated a Class I, II, or III type for human appl
 
 To more fully understand the 510(k) submissions to the FDA, a number of questions will be examined using various vizualizations. See the *Process* tab above for a detailed technical explanation of how the analysis was performed.
 
-0. What kind of devices are considered safe?
-0. What are the demographics of the type of devices submitted?
+0. [What kind of devices are considered safe?](#what-kind-of-devices-are-considered-safe-)
+0. [Where are most devices submitted from within the United States?](#where-are-most-devices-submitted-from-within-the-united-states-)
 0. What type of review committees tend to approve devices?
 0. Where do most submissions come from geographically?
 0. How often do reviews get expedited?

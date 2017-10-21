@@ -24,7 +24,7 @@ html, body {
 .container {
     max-width: $content__width;
     margin: 0 auto;
-    padding: 0 25px;
+    padding: 0px 25px 40px 25px;
 }
 
 iframe {
@@ -33,7 +33,6 @@ iframe {
 }
 
 .container {
-    padding-bottom: 40px;
 }
 
 
@@ -43,15 +42,3 @@ iframe {
     }
 }
 
-
-@media (min-width: 600px) {
-    header {
-        top: 0px;
-        position: fixed;
-        width: 100%;
-    }
-
-    .container {
-        padding-top: 90px;
-    }
-}
