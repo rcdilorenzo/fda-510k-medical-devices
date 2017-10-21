@@ -20,3 +20,13 @@ type alias ChartDataset =
     , backgroundColor : String
     , data : List Int
     }
+
+
+chartExcept : String -> String -> Chart -> Chart
+chartExcept name newId chart =
+    let
+        datasets = List.filter (\dataset -> dataset.label /= name) chart.data.datasets
+        original = chart.data
+        chartData = { original | datasets = datasets }
+    in
+        { chart | data = chartData, id = newId }

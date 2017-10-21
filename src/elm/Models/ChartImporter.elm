@@ -1,6 +1,6 @@
 module Models.ChartImporter exposing
     ( categoryVsDecision
-    , committeeVsDecision)
+    , yearVsDecisionOrtho )
 
 import CsvDecode exposing (..)
 import List.Extra exposing (groupWhile)
@@ -20,22 +20,22 @@ type alias RowFrequency2 =
     }
 
 
-committeeVsDecision : String -> String -> Chart
-committeeVsDecision id raw =
+yearVsDecisionOrtho : String -> String -> Chart
+yearVsDecisionOrtho id raw =
     raw
-    |> rowsFreq2From "committee" "decision_description" "committee_count"
-    |> freq2Chart id
+    |> rowsFreq2From "decision_year" "decision_description" "decision_count"
+    |> freq2Chart id "bar" (Just 300)
 
 
 categoryVsDecision : String -> String -> Chart
 categoryVsDecision id raw =
     raw
     |> rowsFreq2From "category_name" "decision_description" "category_count"
-    |> freq2Chart id
+    |> freq2Chart id "horizontalBar" (Just 400)
 
 
-freq2Chart : String -> List RowFrequency2 -> Chart
-freq2Chart id rawRows =
+freq2Chart : String -> String -> Maybe Int -> List RowFrequency2 -> Chart
+freq2Chart id chartType size rawRows =
     let
         labels
             = groupWhile (\left right -> left.label == right.label) rawRows
@@ -48,7 +48,7 @@ freq2Chart id rawRows =
             |> List.map (\rows -> ChartDataset (firstLabel (\r -> r.altLabel) rows) "" (labelOrderedValues rows labels))
             |> List.map2 (\color dataset -> { dataset | backgroundColor = color}) availableColors
     in
-        Chart id "horizontalBar" (Just 350) (ChartData labels subcategoryDatasets)
+        Chart id chartType size (ChartData labels subcategoryDatasets)
 
 
 firstLabel :(RowFrequency2 -> String) -> List RowFrequency2 -> String

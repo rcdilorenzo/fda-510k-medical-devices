@@ -8,7 +8,7 @@ type alias FlagFiles =
     , decisionCount : String
     , deviceNounCount : String
     , expeditedReviewCount : String
-    , reviewCommitteeVsDecisionCount : String
+    , yearVsDecisionOrthoCount : String
     , yearCount : String
     }
 

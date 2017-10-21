@@ -39,12 +39,20 @@ initChartStates : FlagFiles -> ChartStates
 initChartStates files =
     ChartStates
       (categoryVsDecision "catVsDec" files.categoryVsDecisionCount)
+      (yearVsDecisionOrtho "yearVsDecision--ortho" files.yearVsDecisionOrthoCount)
 
 
 allChartsCmd : ChartStates -> Cmd msg
 allChartsCmd charts =
-    [ plot charts.categoryVsDecision
-    ] |> Cmd.batch
+    let
+        modifiedCatVsDecision
+            = charts.categoryVsDecision
+            |> chartExcept "Substantially Equivalent" "catVsDec--no-primary"
+    in
+      [ plot charts.categoryVsDecision
+      , plot modifiedCatVsDecision
+      , plot charts.yearVsDecisionOrtho
+      ] |> Cmd.batch
 
 
 update : Message -> State -> (State, Cmd Message)

@@ -12,7 +12,7 @@ var input = {
         decisionCount: require('../../dataset-artifacts/decision_counts.csv'),
         deviceNounCount: require('../../dataset-artifacts/device_noun_count.csv'),
         expeditedReviewCount: require('../../dataset-artifacts/expedited_review_count.csv'),
-        reviewCommitteeVsDecisionCount: require('../../dataset-artifacts/review_committee_vs_decision_count.csv'),
+        yearVsDecisionOrthoCount: require('../../dataset-artifacts/year_vs_decision_ortho_count.csv'),
         yearCount: require('../../dataset-artifacts/year_count_oldest_to_newest.csv')
     },
     pages: {
@@ -25,8 +25,8 @@ var input = {
 var app = Elm.Main.embed(document.getElementById('main'), input);
 
 Chart.defaults.global.defaultFontFamily = "'Open Sans', sans-serif";
-Chart.defaults.global.defaultFontColor = "#252525";
-Chart.defaults.global.defaultFontSize = 14;
+Chart.defaults.global.defaultFontColor = "#555555";
+Chart.defaults.global.defaultFontSize = 13;
 
 charts = {};
 toRender = {};
@@ -37,7 +37,13 @@ var renderChart = function (id, options) {
     ctx.canvas.height = options.height ? options.height : 400;
     delete options['height'];
     charts[id] = new Chart(ctx, Object.assign(options, {
-        options: { scales: { xAxes: [{ stacked: true }], yAxes: [{ stacked: true }] }}
+        options: {
+            maintainAspectRatio: false,
+            scales: {
+                xAxes: [{ stacked: true }],
+                yAxes: [{ stacked: true }]
+            }
+        }
     }));
 };
 
