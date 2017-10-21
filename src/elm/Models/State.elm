@@ -10,6 +10,7 @@ type alias ChartStates =
     , yearCount : Chart
     , subcatVsDecision : PagingChart
     , deviceNouns : PagingChart
+    , reviewDaysAvg : Chart
     }
 
 type alias State =

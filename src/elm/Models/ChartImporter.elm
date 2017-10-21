@@ -4,6 +4,13 @@ import Models.Chart exposing (..)
 import Models.ChartHelper exposing (..)
 
 
+reviewDaysAvg : String -> String -> Chart
+reviewDaysAvg id raw =
+    raw
+    |> rowsFreqFrom "year_submitted" "avg_review_days"
+    |> freqChart id "line" "Average Review Days (Rounded)" (Just 200)
+
+
 deviceNouns : String -> String -> Chart
 deviceNouns id raw =
     raw
@@ -22,7 +29,7 @@ yearCount : String -> String -> Chart
 yearCount id raw =
     raw
     |> rowsFreqFrom "year" "count"
-    |> freqChart id "bar" "Submissions By Year" (Just 50)
+    |> freqChart id "bar" "Submissions By Year" (Just 250)
 
 
 yearVsDecisionOrtho : String -> String -> Chart

@@ -12,6 +12,7 @@ var input = {
         decisionCount: require('../../dataset-artifacts/decision_counts.csv'),
         deviceNounCount: require('../../dataset-artifacts/device_noun_count.csv'),
         expeditedReviewCount: require('../../dataset-artifacts/expedited_review_count.csv'),
+        reviewDaysAvgCount: require('../../dataset-artifacts/review_days_average_count.csv'),
         subcategoryVsDecisionCount: require('../../dataset-artifacts/subcategory_vs_decision_count.csv'),
         yearVsDecisionOrthoCount: require('../../dataset-artifacts/year_vs_decision_ortho_count.csv'),
         yearCount: require('../../dataset-artifacts/year_count_oldest_to_newest.csv')
@@ -24,6 +25,7 @@ var input = {
         section4a: require('./md/4a-specific-devices.md'),
         section4b: require('./md/4b-specific-devices.md'),
         section5: require('./md/5-expedited-review.md'),
+        section6: require('./md/6-review-duration.md'),
         intro: require('./md/intro.md')
     }
 };
@@ -45,6 +47,7 @@ var renderChart = function (id, options) {
     charts[id] = new Chart(ctx, Object.assign(options, {
         options: {
             maintainAspectRatio: false,
+            elements: { line: { tension: 0 } },
             scales: {
                 xAxes: [{ stacked: true, ticks: { maxRotation: 80 } }],
                 yAxes: [{ stacked: true }]
