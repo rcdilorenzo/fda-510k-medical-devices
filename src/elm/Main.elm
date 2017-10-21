@@ -43,6 +43,7 @@ initChartStates files =
       ((subcatVsDecision "subcatVsDecision" files.subcategoryVsDecisionCount) |> wrapAsPaging 15)
       ((deviceNouns "deviceNouns" files.deviceNounCount) |> wrapAsPaging 30)
       (reviewDaysAvg "reviewDaysAvg" files.reviewDaysAvgCount)
+      (topApplicants "topApplicants" files.applicantCount)
 
 
 allChartsCmd : ChartStates -> Cmd msg
@@ -59,6 +60,7 @@ allChartsCmd charts =
       , plot (applyPaging charts.subcatVsDecision)
       , plot (applyPaging charts.deviceNouns)
       , plot charts.reviewDaysAvg
+      , plot charts.topApplicants
       ] |> Cmd.batch
 
 

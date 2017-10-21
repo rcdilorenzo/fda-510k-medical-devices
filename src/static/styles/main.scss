@@ -24,17 +24,13 @@ html, body {
 .container {
     max-width: $content__width;
     margin: 0 auto;
-    padding: 0px 25px 40px 25px;
+    padding: 0px 25px 80px 25px;
 }
 
 iframe {
     width: 100%;
     border: none;
 }
-
-.container {
-}
-
 
 @media (max-width: 700px) {
     .topnav__section--banner {

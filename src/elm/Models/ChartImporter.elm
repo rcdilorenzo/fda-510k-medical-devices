@@ -4,6 +4,13 @@ import Models.Chart exposing (..)
 import Models.ChartHelper exposing (..)
 
 
+topApplicants : String -> String -> Chart
+topApplicants id raw =
+    raw
+    |> rowsFreqFrom "applicant" "submissions"
+    |> freqChart id "horizontalBar" "Top 20 Applicants" (Just 400)
+
+
 reviewDaysAvg : String -> String -> Chart
 reviewDaysAvg id raw =
     raw

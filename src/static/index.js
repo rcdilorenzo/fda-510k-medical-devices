@@ -6,10 +6,7 @@ var Elm = require('../elm/Main');
 var input = {
     files: {
         applicantCount: require('../../dataset-artifacts/applicant_count_top_20.csv'),
-        categoryCount: require('../../dataset-artifacts/category_counts_all_time.csv'),
         categoryVsDecisionCount: require('../../dataset-artifacts/category_vs_decision_count.csv'),
-        countryCode: require('../../dataset-artifacts/country_code_count.csv'),
-        decisionCount: require('../../dataset-artifacts/decision_counts.csv'),
         deviceNounCount: require('../../dataset-artifacts/device_noun_count.csv'),
         expeditedReviewCount: require('../../dataset-artifacts/expedited_review_count.csv'),
         reviewDaysAvgCount: require('../../dataset-artifacts/review_days_average_count.csv'),
@@ -19,6 +16,7 @@ var input = {
     },
     pages: {
         about: require('./md/about.md'),
+        intro: require('./md/intro.md'),
         section1: require('./md/1-safe-devices.md'),
         section2: require('./md/2-basic-demographics.md'),
         section3: require('./md/3-year-counts.md'),
@@ -26,7 +24,8 @@ var input = {
         section4b: require('./md/4b-specific-devices.md'),
         section5: require('./md/5-expedited-review.md'),
         section6: require('./md/6-review-duration.md'),
-        intro: require('./md/intro.md')
+        section7: require('./md/7-top-applicants.md'),
+        conclusion: require('./md/conclusion.md')
     }
 };
 

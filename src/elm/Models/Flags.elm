@@ -2,10 +2,7 @@ module Models.Flags exposing (..)
 
 type alias FlagFiles =
     { applicantCount : String
-    , categoryCount : String
     , categoryVsDecisionCount : String
-    , countryCode : String
-    , decisionCount : String
     , deviceNounCount : String
     , expeditedReviewCount : String
     , reviewDaysAvgCount : String
@@ -24,6 +21,8 @@ type alias FlagPages =
     , section4b : String
     , section5 : String
     , section6 : String
+    , section7 : String
+    , conclusion : String
     }
 
 type alias Flags =

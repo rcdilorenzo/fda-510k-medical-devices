@@ -11,6 +11,7 @@ type alias ChartStates =
     , subcatVsDecision : PagingChart
     , deviceNouns : PagingChart
     , reviewDaysAvg : Chart
+    , topApplicants : Chart
     }
 
 type alias State =

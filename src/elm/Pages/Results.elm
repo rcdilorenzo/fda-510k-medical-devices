@@ -30,4 +30,6 @@ view model =
             , span [] [ text "Frequency of nouns appearing in device descriptions (multiple pages)."] ]
         , Pages.Static.view model.pages.section5
         , Pages.Static.view model.pages.section6
+        , Pages.Static.view model.pages.section7
+        , Pages.Static.view model.pages.conclusion
         ]

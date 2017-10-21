@@ -1,0 +1,5 @@
+# Conclusion
+
+This sample exploration into a real world dataset has been a fascinating experience for me. With my software engineering background, it feels similar to asking targeted questions of customers and users to gain understanding of the business requirements as well as the value that the product or result should fulfill. I was also able on a technical level to combine quite a few different technologies and tools. I look forward even more now to the remainder of my graduate program.
+
+For those more curious but perhaps not as technical, I would highly recommend visiting the folder "dataset-artifacts" in the [repository here](https://github.com/rcdilorenzo/fda-510k-medical-devices/tree/master/dataset-artifacts). It contains the comma-separated values (CSVs) that are easily readable. If you are more technical or have a Github account, I would greatly appreciate if you found any value in the material here to star the [GitHub repository for this website](https://l.rcd.zone/fda-repo-stargazers). If you have any questions or would like to chat, I can be found at [keybase.io/rcdilorenzo](https://l.rcd.zone/keybase-profile).
