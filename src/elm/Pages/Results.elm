@@ -23,4 +23,5 @@ view model =
         , Pages.Static.view model.pages.section4b
         , Pager.view model.charts.deviceNouns (UpdateNouns Decrement) (UpdateNouns Increment)
         , canvas [ id "deviceNouns", style [("max-height", "250px")] ] []
+        , Pages.Static.view model.pages.section5
         ]

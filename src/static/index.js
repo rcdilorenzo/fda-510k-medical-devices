@@ -23,6 +23,7 @@ var input = {
         section3: require('./md/3-year-counts.md'),
         section4a: require('./md/4a-specific-devices.md'),
         section4b: require('./md/4b-specific-devices.md'),
+        section5: require('./md/5-expedited-review.md'),
         intro: require('./md/intro.md')
     }
 };

@@ -21,6 +21,7 @@ type alias FlagPages =
     , section3 : String
     , section4a : String
     , section4b : String
+    , section5 : String
     }
 
 type alias Flags =
