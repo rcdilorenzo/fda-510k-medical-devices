@@ -58,7 +58,7 @@
 
 .topnav__label--top, .topnav__label--bottom {
     margin-left: 75px;
-    font-size: 13pt;
+    font-size: 12pt;
     margin-right: 10px;
 }
 
@@ -70,7 +70,7 @@
 .topnav__label--bottom {
     display: block;
     color: rgba(white, 0.4);
-    font-size: 11pt;
+    font-size: 10pt;
     margin-top: 0px;
 }
 
@@ -104,7 +104,7 @@
     cursor: pointer;
     color: $color__primary--dark;
     text-decoration: none;
-    font-size: 16pt;
+    font-size: 15pt;
     &.navbar__link--active {
         font-weight: bold;
     }

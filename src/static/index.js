@@ -17,13 +17,16 @@ var input = {
     },
     pages: {
         about: require('./md/about.md'),
+        section1: require('./md/1-safe-devices.md'),
         intro: require('./md/intro.md')
     }
 };
 
 var app = Elm.Main.embed(document.getElementById('main'), input);
 
-Chart.defaults.global.legend.padding = 1000;
+Chart.defaults.global.defaultFontFamily = "'Open Sans', sans-serif";
+Chart.defaults.global.defaultFontColor = "#252525";
+Chart.defaults.global.defaultFontSize = 14;
 
 charts = {};
 toRender = {};

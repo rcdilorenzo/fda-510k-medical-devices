@@ -48,7 +48,7 @@ freq2Chart id rawRows =
             |> List.map (\rows -> ChartDataset (firstLabel (\r -> r.altLabel) rows) "" (labelOrderedValues rows labels))
             |> List.map2 (\color dataset -> { dataset | backgroundColor = color}) availableColors
     in
-        Chart id "horizontalBar" (Just 300) (ChartData labels subcategoryDatasets)
+        Chart id "horizontalBar" (Just 350) (ChartData labels subcategoryDatasets)
 
 
 firstLabel :(RowFrequency2 -> String) -> List RowFrequency2 -> String
