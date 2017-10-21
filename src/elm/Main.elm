@@ -40,6 +40,7 @@ initChartStates files =
     ChartStates
       (categoryVsDecision "catVsDec" files.categoryVsDecisionCount)
       (yearVsDecisionOrtho "yearVsDecision--ortho" files.yearVsDecisionOrthoCount)
+      (yearCount "yearCount" files.yearCount)
 
 
 allChartsCmd : ChartStates -> Cmd msg
@@ -52,6 +53,7 @@ allChartsCmd charts =
       [ plot charts.categoryVsDecision
       , plot modifiedCatVsDecision
       , plot charts.yearVsDecisionOrtho
+      , plot charts.yearCount
       ] |> Cmd.batch
 
 

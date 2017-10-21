@@ -19,6 +19,7 @@ var input = {
         about: require('./md/about.md'),
         section1: require('./md/1-safe-devices.md'),
         section2: require('./md/2-basic-demographics.md'),
+        section3: require('./md/3-year-counts.md'),
         intro: require('./md/intro.md')
     }
 };
