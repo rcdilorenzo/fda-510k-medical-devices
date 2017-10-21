@@ -4,11 +4,18 @@ import Models.Chart exposing (..)
 import Models.ChartHelper exposing (..)
 
 
+deviceNouns : String -> String -> Chart
+deviceNouns id raw =
+    raw
+    |> rowsFreqFrom "device noun" "count"
+    |> freqChart id "bar" "Device Descriptions (Nouns Only)" Nothing
+
+
 subcatVsDecision : String -> String -> Chart
 subcatVsDecision id raw =
     raw
     |> rowsFreq2From "subcategory_name" "decision_description" "subcategory_count"
-    |> freq2Chart id "horizontalBar" (Just 100)
+    |> freq2Chart id "horizontalBar" Nothing
 
 
 yearCount : String -> String -> Chart

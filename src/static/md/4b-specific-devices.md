@@ -1,1 +1,1 @@
-In addition to understanding the type of devices through the categories, a word frequency of each nouns taken from the device descriptions might give a little bit of perspective on what is most often used. 
+In addition to understanding the type of devices through the categories, a word frequency of each nouns taken from the device descriptions might give a little bit of perspective on what is most often used. For example, notice the prolific use of words such as *catheter*, *blood*, and *laser* in comparison with the many pages of less frequently appearing nouns.

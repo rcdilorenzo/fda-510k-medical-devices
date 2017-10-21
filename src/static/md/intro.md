@@ -9,8 +9,8 @@ To more fully understand the 510(k) submissions to the FDA, a number of question
 0. [How many devices are submitted per year?](#how-many-devices-are-submitted-per-year-)
 0. [What specific types of devices are submitted?](#what-specific-types-of-devices-are-submitted-)
 0. How often do reviews get expedited?
-0. What companies make the most submissions?
 0. How long do most reviews take?
+0. What companies make the most submissions?
 
 This [dataset](https://l.rcd.zone/fda-510k-dataset) from the openFDA project [started in 2014](https://open.fda.gov/update/openfda-innovative-initiative-opens-door-to-wealth-of-fda-publicly-available-data/) incorporates a number of data attributes including but not limited to
 

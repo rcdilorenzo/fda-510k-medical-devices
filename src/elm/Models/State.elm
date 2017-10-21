@@ -9,6 +9,7 @@ type alias ChartStates =
     , yearVsDecisionOrtho : Chart
     , yearCount : Chart
     , subcatVsDecision : PagingChart
+    , deviceNouns : PagingChart
     }
 
 type alias State =

@@ -41,6 +41,7 @@ initChartStates files =
       (yearVsDecisionOrtho "yearVsDecision--ortho" files.yearVsDecisionOrthoCount)
       (yearCount "yearCount" files.yearCount)
       ((subcatVsDecision "subcatVsDecision" files.subcategoryVsDecisionCount) |> wrapAsPaging 15)
+      ((deviceNouns "deviceNouns" files.deviceNounCount) |> wrapAsPaging 30)
 
 
 allChartsCmd : ChartStates -> Cmd msg
@@ -55,6 +56,7 @@ allChartsCmd charts =
       , plot charts.yearVsDecisionOrtho
       , plot charts.yearCount
       , plot (applyPaging charts.subcatVsDecision)
+      , plot (applyPaging charts.deviceNouns)
       ] |> Cmd.batch
 
 
@@ -72,6 +74,14 @@ update msg model =
                 charts = model.charts
                 (chart, cmd) = updatePagingChart charts.subcatVsDecision chartMsg
                 newCharts = { charts | subcatVsDecision = chart }
+            in
+                ({ model | charts = newCharts}, cmd)
+
+        UpdateNouns chartMsg ->
+            let
+                charts = model.charts
+                (chart, cmd) = updatePagingChart charts.deviceNouns chartMsg
+                newCharts = { charts | deviceNouns = chart }
             in
                 ({ model | charts = newCharts}, cmd)
 

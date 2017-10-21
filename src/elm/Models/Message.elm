@@ -9,4 +9,5 @@ type ChartMessage
 type Message
     = ChangeRoute RouteSection
     | UpdateSubcat ChartMessage
+    | UpdateNouns ChartMessage
     | NoOp

@@ -15,8 +15,12 @@ import Basics exposing (toString)
 view : PagingChart -> Message -> Message -> Html Message
 view pagingChart decrement increment =
     div [ class "chart-pager" ]
-        [ a [ class "chart-pager__link chart-pager__link--left", onClick decrement, property "innerHTML" (string "&#8249") ] []
+        [ a [ class "chart-pager__link chart-pager__link--left"
+            , onClick decrement, property "innerHTML" (string "&#8249") ] []
+
         , label [ class "chart-pager__label" ]
             [ text ("Page " ++ (toString pagingChart.page) ++ " of " ++ (lastPage pagingChart |> toString)) ]
-        , a [ class "chart-pager__link chart-pager__link--right", onClick increment, property "innerHTML" (string "&#8250") ] []
+
+        , a [ class "chart-pager__link chart-pager__link--right"
+            , onClick increment, property "innerHTML" (string "&#8250") ] []
         ]

@@ -18,7 +18,9 @@ view model =
         , Pages.Static.view model.pages.section2
         , Pages.Static.view model.pages.section3
         , Pages.Static.view model.pages.section4a
-        , Pager.view (model.charts.subcatVsDecision |> Debug.log "chart") (UpdateSubcat Decrement) (UpdateSubcat Increment)
+        , Pager.view model.charts.subcatVsDecision (UpdateSubcat Decrement) (UpdateSubcat Increment)
         , canvas [ id "subcatVsDecision", style [("max-height", "400px")] ] []
-        , p [] [ text "hey" ]
+        , Pages.Static.view model.pages.section4b
+        , Pager.view model.charts.deviceNouns (UpdateNouns Decrement) (UpdateNouns Increment)
+        , canvas [ id "deviceNouns", style [("max-height", "250px")] ] []
         ]

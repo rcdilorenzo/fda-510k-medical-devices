@@ -22,6 +22,7 @@ var input = {
         section2: require('./md/2-basic-demographics.md'),
         section3: require('./md/3-year-counts.md'),
         section4a: require('./md/4a-specific-devices.md'),
+        section4b: require('./md/4b-specific-devices.md'),
         intro: require('./md/intro.md')
     }
 };
@@ -44,7 +45,7 @@ var renderChart = function (id, options) {
         options: {
             maintainAspectRatio: false,
             scales: {
-                xAxes: [{ stacked: true }],
+                xAxes: [{ stacked: true, ticks: { maxRotation: 80 } }],
                 yAxes: [{ stacked: true }]
             }
         }
