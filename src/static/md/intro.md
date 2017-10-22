@@ -20,7 +20,7 @@ This [dataset](https://l.rcd.zone/fda-510k-dataset) from the openFDA project [st
 
 # Data Questions
 
-As this exploration is during some of my first classes for a [M.S. in Data Science](http://www.regis.edu/CCIS/Academics/Degrees-Programs/Graduate-Programs/MS-Data-Science.aspx), I am no expert in the medical field and do not attempt to be authoritative or push industry changes. Instead, my goal is to pursue some interesting answers to questions that could arise from a dataset such as this one. Although some of the data is processed on the fly as seen here, it has been significantly condensed from its original 1 GB size from [open.fda.gov](https://open.fda.gov). All data present here should be up-to-date as of the end of September 2017 when it was downloaded. For more information on the condensed output files, check out the *Process* tab and the [source code](https://l.rcd.zone/fda-repo) for this web application.
+As this exploration is during some of my first classes for a [M.S. in Data Science](http://www.regis.edu/CCIS/Academics/Degrees-Programs/Graduate-Programs/MS-Data-Science.aspx), I am no expert in the medical field and do not attempt to be authoritative or push industry changes. Instead, my goal is to pursue some interesting answers to questions that could arise from a dataset such as this one. Although some of the data is processed on-the-fly as seen here, it has been significantly condensed from its original 1 GB size from [open.fda.gov](https://open.fda.gov). All data present here should be up-to-date as of the end of September 2017 when it was downloaded. For more information on the condensed output files, check out the *Process* tab and the [source code](https://l.rcd.zone/fda-repo) for this web application.
 
 
 

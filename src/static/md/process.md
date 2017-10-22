@@ -9,7 +9,7 @@ As with most journeys, mine began by searching the internet. This quest, however
 
 ## Importing Data
 
-Although an API was directly available from the FDA, it was unsuitable for my purposes since I needed to quickly run complex queries that would be impossible through the API. Additionally, I needed to use some data science related tools for the class, thereby making this decision easy. With my software engineering background, I was quite familiar with the JSON format but even at the beginning had an inkling that a fully-formated JSON block might be difficult to import into "Big Data" tools.
+Although an API was directly available from the FDA, it was unsuitable for my purposes since I needed to quickly run complex queries that would be impossible through the API. Additionally, I needed to use some data science related tools for the class; this decision, therefore, became easy to make. With my software engineering background, I was quite familiar with the JSON format yet even at the beginning had an inkling that a fully-formated JSON block might be difficult to import into "Big Data" tools.
 
 At this point, the JSON looked something like this:
 
@@ -45,9 +45,9 @@ From this point, I imported into the Hadoop cluster I was working on using a com
 $ hadoop fs -copyFromLocal /usr/data/scripts/device-510k-converted.json /user/rcdilorenzo/
 ```
 
-Unfortunately, I became a bit stuck investigating how to get this dataset into [Apache Hive](https://hive.apache.org/) so that I could visually explore it and perform analysis. To do this, I hoped to use other tools provided by [Hortonworks Data Platform](https://hortonworks.com/products/data-center/hdp/) (HDP) on the rack server to accomplish this goal. [Apache Pig](https://pig.apache.org/) was my first attempt before I realized that most "Big Data" tools expect the JSON to be line-by-line rather than one enormous array. I was attempting to apply [Twitter's Elephant Bird plugin](https://github.com/twitter/elephant-bird) when I came to this realization. Though I did get Apache Pig to read the data, the translation to an HBase Catalog table within Hadoop was nearly impossible since the schema of columns and types was being determined on-the-fly by elephant-bird.
+Unfortunately, I became a bit stuck investigating how to get this dataset into [Apache Hive](https://hive.apache.org/) so that I could visually explore it and perform analysis. To do this, I hoped to use other tools provided by [Hortonworks Data Platform](https://hortonworks.com/products/data-center/hdp/) (HDP) on the rack server to accomplish this goal. [Apache Pig](https://pig.apache.org/) was my first attempt before I realized that most "Big Data" tools expect the JSON to be line-by-line rather than one enormous array. I was attempting to apply [Twitter's Elephant Bird JSON plugin](https://github.com/twitter/elephant-bird) when I came to this realization. Though I did get Apache Pig to read the data, the translation to an HBase Catalog table within Hadoop was nearly impossible since the schema of columns and types was being determined on-the-fly by Elephant Bird.
 
-Having discovered this alternate format, I scoured the web looking for conversion to a line-by-line based JSON format. The few tools I did find were quite disappointing. Therefore, I pulled out one of my favorite languages for this job writing the script below to manually stream each line and group until a line could be appended to an output file:
+Having discovered this alternate format, I scoured the web looking for conversion to a line-by-line based JSON format. The few tools I did find were quite disappointing. Therefore, I pulled out one of my favorite languages for this job writing the script below to manually stream each line and group until a single-line JSON object could be appended to the output file.
 
 ```elixir
 defmodule MultiLineConvert do
@@ -77,7 +77,7 @@ end
 MultiLineConvert.start("../device-510k-converted.json", "device-510k-fda.txt.json")
 ```
 
-After letting this project rest for a week or two while working on new tools, I decided against using Hive with HBase and moved towards using [Spark](https://spark.apache.org/) with python and SQL in an [Apache Zeppelin](https://zeppelin.apache.org/) notebook. About this same time, I built my own computer with significantly higher clock speeds and RAM than the rack server. This machinery upgrade meant that I moved away from the Ambari views provided by HDP and towards using a Zeppelin notebook within a supporting HDFS (Hadoop Distributed File System). In this case, the HDFS was more practice than anything else.
+After letting this project rest for a week or two while working on new tools, I decided against using Hive with HBase and moved towards using [Spark](https://spark.apache.org/) with python and SQL in an [Apache Zeppelin](https://zeppelin.apache.org/) notebook. About this same time, I built my own computer with significantly higher clock speeds and RAM than the rack server. This machinery upgrade meant that I moved away from the Ambari views provided by HDP and towards using a Zeppelin notebook without a backing HDFS (Hadoop Distributed File System).
 
 Once I settled on the Zeppelin notebook, I was able to easily import the data with this simple snippet:
 
@@ -124,7 +124,7 @@ devices.printSchema()
 
 ## Setup Business Goals
 
-For this sample project to be valuable, it was necessary to create specific questions that could be answered by the medical devices. These questions need to be potentially valuable to those in the business. Thankfully, with two people in my immediate family, I was able to validate these questions a bit at the end of the project based on their feedback.
+For this sample project to be valuable, it was necessary to create specific questions that could be answerable by the medical devices data. These questions need to be potentially valuable to those in the business. Thankfully, with two people in my immediate family, I was able to validate these questions a bit at the end of the project based on their feedback.
 
 To begin, I brainstormed on some questions to guide my analysis and exploration.
 
@@ -136,13 +136,13 @@ To begin, I brainstormed on some questions to guide my analysis and exploration.
 - How often do reviews get expedited?
 - What can be gathered from the free-text summary statements of the reviews?
 
-As compared with the actual list from the *Results* tab, some questions were slightly modified while others ended up being thrown out completely. For example, the question about review committees became irrelevant when I graphed the review committee decisions and compared it to the decision breakdown based on general category. Apparently, a review committee was created for each category of device submitted, making these two graphs within 1% of each other.
+As compared with the actual list from the *Results* tab, some questions were slightly modified while others ended up being thrown out completely. For example, the question about review committees became irrelevant when I graphed the committee grouped decisions in comparison to the general category grouped decisions. Apparently, a review committee was created for each category of device submitted, making these two graphs within 1% difference.
 
 ## Data Analysis
 
 All of the analysis work was performed inside of a Zeppelin notebook available in the [GitHub repository](https://git.io/vdNzH). However, instead of going over each block from that notebook, I will explain some of the more interesting bits. If you do not have a Zeppelin installation handy, [a preview version](https://github.com/rcdilorenzo/fda-510k-medical-devices/raw/4b89c109006581935e41b1fb1ced97a585bfe56c/zeppelin-notebook-snapshot-10-2017.pdf) of the notebook is available.
 
-Because Zeppelin uses Spark underneath, I was not sure exactly how much of SQL could be used especially in terms of aggregate functions. In fact, I only later discovered that the substring function could be used since it seemed not work intially. This discovery lead to more small blocks of SQL rather than large blocks of more direct PySpark manipulations. For example, I was able to execute the following SQL statement to load all of the decisions for the category "Orthopedic devices" and group them by year and count the frequencies:
+Because Zeppelin uses Spark underneath, I was not sure exactly how much of SQL could be used especially in terms of aggregate functions. In fact, I only later discovered that the `substring` function could be used since it seemed not work intially. This discovery lead to more small blocks of SQL rather than large blocks of more direct PySpark manipulations. For example, I was able to execute the following SQL statement to load all of the decisions for the category "Orthopedic devices" and group them by year and count the frequencies:
 
 ```sql
 SELECT decision_year, decision_description, COUNT(*) as decision_count FROM
@@ -208,11 +208,13 @@ frame = spark.createDataFrame(pd.DataFrame(all, columns=columns))
 frame.createOrReplaceTempView("device_types")
 ```
 
-Aside from these two examples, the other code blocks took similar approaches but incorporated different aspects of the data. Once a code block was ready, I was able to download each table result as a CSV which made the final stage more streamlined.
+With this temporary view store, then, I was able to join it to the original set by splitting out the general from the specific categories and performing `WHERE` clauses on both to achieved what was desired.
+
+Aside from these two examples, the other code blocks took similar approaches but incorporated different aspects of the data. Once a code block was ready, I downloaded each table result as a CSV which could then be plugged directly into the web application.
 
 ## Data Presentation
 
-In this final part, I was able to combine everything I had worked on into a single, cohesive website. As a software engineer, I am always up for doing more programming and designing beautiful things. In this case, I decided to go with the following web stack because it provided the best balanace between runtime guarentees, on-the-fly processing, and experimental tooling.
+In this final part, I was able to combine everything I had worked on into a single, cohesive website. As a software engineer, I am always up for doing more programming and designing beautiful things. In this case, I decided to go with the following web stack because it provided the best balanace of runtime guarentees, on-the-fly processing, and experimental tooling.
 
 Compilation - [Webpack](https://webpack.js.org/)
 
@@ -224,6 +226,6 @@ Libraries - [elm-markdown](https://github.com/evancz/elm-markdown), [elm-csv-dec
 
 Most of the work was processing the graphs, but a significant amount of the initial work was making sure Elm could interop with Javascript and call ChartJS appropriately. Once that was setup, I wasted no time in getting to the other necessary details. I even got a bit of design assistance from one of my co-workers. Of course, because this was put together in just under a week, some features and a couple of strange bugs still exist such as no proper URL routing. That said, I have to keep reminding myself that it is a demo website rather than an application depended upon by hundreds of people.
 
-To handle dynamic interaction, I took the downloaded CSVs mentioned earlier and had webpack import them directly such that Elm could create charts and manipulate them as needed. Once the webpage is first loaded, all of the chart data has been computed from the CSVs such that the only work left is for ChartJS. In short, I am extremely happy about how the website part of this project worked out and how easy it is to see the relevant data.
+To handle dynamic interaction, I took the downloaded CSVs mentioned earlier and had webpack import them directly such that Elm could create charts and manipulate them as needed. Once the webpage is first loaded, all of the chart data is computed from the CSVs such that the only work left is for ChartJS. In short, I am extremely happy about how the website part of this project turned out and how easy it is to see the relevant data.
 
 
