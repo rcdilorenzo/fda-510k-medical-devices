@@ -129,7 +129,10 @@ contentView model =
         ResultsR ->
             Pages.Results.view model
         ProcessR ->
-            Pages.Static.view model.pages.process
+            div []
+                [ Pages.Static.view model.pages.process
+                , Pages.Static.view model.pages.conclusion
+                ]
         AboutR ->
             Pages.Static.view model.pages.about
 

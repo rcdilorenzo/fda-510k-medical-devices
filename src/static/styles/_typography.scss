@@ -51,10 +51,10 @@ p {
     line-height: 2em;
 }
 
-.container a {
+.container:not(pre) a {
     text-decoration: none;
-    font-weight: bold;
-    border-bottom: 2px solid $color__primary;
+    font-weight: 600;
+    border-bottom: 1px solid $color__primary;
     color: $color__primary;
     &:hover {
         color: $color__primary--dark;
