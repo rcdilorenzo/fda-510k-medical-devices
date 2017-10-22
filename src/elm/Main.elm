@@ -129,7 +129,7 @@ contentView model =
         ResultsR ->
             Pages.Results.view model
         ProcessR ->
-            Pages.Static.view "To be expanded..."
+            Pages.Static.view model.pages.process
         AboutR ->
             Pages.Static.view model.pages.about
 

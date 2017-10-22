@@ -1,5 +1,7 @@
 require('./styles/main.scss');
 
+var hljs = require('highlightjs');
+
 var Chart = require('chart.js');
 var Elm = require('../elm/Main');
 
@@ -16,6 +18,7 @@ var input = {
     },
     pages: {
         about: require('./md/about.md'),
+        process: require('./md/process.md'),
         intro: require('./md/intro.md'),
         section1: require('./md/1-safe-devices.md'),
         section2: require('./md/2-basic-demographics.md'),
@@ -74,7 +77,22 @@ app.ports.plot.subscribe(function (options) {
     }
 });
 
+var hasClass = function (elem, klass) {
+    return (" " + elem.className + " ").indexOf(" " + klass + " ") > -1;
+}
+
+var highlighting = {};
+
 document.addEventListener("DOMNodeInserted", function (event) {
+    var blocks = document.querySelectorAll('pre code');
+    blocks.forEach(function (element) {
+        if (!hasClass(element, 'hljs') && !highlighting[element]) {
+            highlighting[element] = true;
+            hljs.highlightBlock(element);
+            highlighting[element] = false;
+        }
+    });
+
     for (var id in toRender) {
         if (document.getElementById(id)) {
             renderChart(id, toRender[id]);
